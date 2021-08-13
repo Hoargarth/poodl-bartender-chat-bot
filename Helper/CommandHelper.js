@@ -36,11 +36,13 @@ export default class CommandHelper {
         const originalMessage = context.update.message.reply_to_message;
 
         // don't do any further tasks if message was not a reply or user replied to itself
-        if (typeof originalMessage === 'undefined' /* || originalUserId === answeringUserId */) return false;
+        if (typeof originalMessage === 'undefined') return false;
 
         const originalUserId = originalMessage.from.id;
         const answeringMessage = context.update.message;
         const answeringUserId = answeringMessage.from.id;
+
+        if (originalUserId === answeringUserId) return false;
 
         // only + or - are allowed for reputation change
         if (new RegExp("^[+\+]+$").test(answeringMessage.text) || new RegExp("^[-\-]+$").test(answeringMessage.text)) {
