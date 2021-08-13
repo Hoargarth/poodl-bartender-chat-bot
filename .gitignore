@@ -1,0 +1,9 @@
+# node files
+package-lock.json
+
+# node folders
+node_modules/
+
+# app
+Config/*
+!Config/*.sample

@@ -1,0 +1,16 @@
+{
+  "name": "poodlbartender",
+  "version": "1.0.0",
+  "description": "Poodl Bot for various stuff. Thus bartender, always listening, always serving",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "SpaceDog",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "sqlite3": "^5.0.2",
+    "telegraf": "^4.4.1"
+  }
+}
