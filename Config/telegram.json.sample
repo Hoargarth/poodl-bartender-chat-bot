@@ -1,3 +1,9 @@
 {
-    "telegramApiToken": ""
+    "telegramApiToken": "",
+    "database": {
+        "name": "",
+        "user": "",
+        "password": "",
+        "host": ""
+    }
 }

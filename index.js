@@ -13,18 +13,21 @@ const commandHelper = new CommandHelper();
 // Setup Telegram bot
 const bot = new Telegraf(telegramConfig.telegramApiToken)
 
-// This command lets the bot reply with the users own stats
-bot.command('stats', (ctx) => {
-    commandHelper.replyWithUserStats(ctx);
-});
-
 // General message event. Different stuff happening here :)
 bot.on('text', (ctx) => {
-    commandHelper.checkForCommands(ctx);
+    // check if admin/creator
+    console.log(ctx.update.message);
+    ctx.getChatMember(ctx.update.message.from.id).then((chatMember) => {
+        if (chatMember.status === 'creator' || chatMember.status === 'administrator') {
+            commandHelper.checkForAdminCommands(ctx);
+        }
+    });
+
+    // run all other commands
 });
 
 bot.launch();
 
 // Enable graceful stop
-process.once('SIGINT', () => bot.stop('SIGINT'))
-process.once('SIGTERM', () => bot.stop('SIGTERM'))
+//process.once('SIGINT', () => bot.stop('SIGINT'))
+//process.once('SIGTERM', () => bot.stop('SIGTERM'))
